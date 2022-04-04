@@ -1,0 +1,29 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <h1><i>Login</i></h1>
+</div>
+
+<div class="card-body">
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="username"><b>Username</b></label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+    </div>
+    <div class="form-group">
+        <label for="password"><b>Password</b></label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+    </div>
+    <button style="margin-top: 10px;" class="button" type="submit" class="btn btn-primary">Login</button>
+</form>
+
+<p><b>Don't have an account? <a href="{% url 'register' %}">Register</a</b></p>
+</div>
+
+{% endblock content %}
+<div class="footer">
+    <p><i>App by Vineet Rawat</i></p>
+</div>
+<!-- </body> -->
