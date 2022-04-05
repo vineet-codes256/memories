@@ -4,10 +4,8 @@ from PIL import Image
 
 from django.core.files import File
 from django.db import models
-from django.contrib.auth.models import User
 
 class Memory(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)                     
     slug = models.SlugField()
     species = models.CharField(null=True, max_length=100)

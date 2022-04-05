@@ -23,17 +23,15 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <router-link to="/login" class="button is-success">Login</router-link>
-              <router-link to="/register" class="button is-light">Register</router-link>
+              <router-link to="/add" class="button is-primary is-outlined">
+                <strong>Add Memory</strong></router-link>
+              <router-link to="/login" class="button is-success is-outlined">Login</router-link>
+              <router-link to="/register" class="button is-info is-outlined">Register</router-link>
             </div>
           </div>
         </div>
       </div>
     </nav>
-
-    <div class="is-loading-bar has-text-centered" v-bind:class="{'is-loading': $store.state.isLoading }">
-      <div class="lds-dual-ring"></div>
-    </div>
     <section class="section">
       <router-view/>
     </section>
@@ -55,26 +53,9 @@ export default {
   data() {
     return {
       showMobileMenu: false,
-      cart: {
-        items: [],
-      }
     }
-  },
-  beforeCreate() {
-    this.$store.commit('initializeStore')
   },
   mounted() {
-    this.cart = this.$store.state.cart
-  },
-  computed: {
-    cartTotalLength() {
-      let totalLength = 0
-
-      for (let i = 0; i < this.cart.items.length; i++) {
-        totalLength += this.cart.items[i].quantity
-      }
-      return totalLength
-    }
   },
 }
 </script>

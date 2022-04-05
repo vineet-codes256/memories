@@ -1,13 +1,13 @@
 <template>
   <div class="home">
-    <section class="hero is-medium is-dark mb-6">
+    <section class="hero is-primary is-small mb-6">
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
-           Welcome to <b><i> Memories </i></b>
+           Add new Adventure <b><i> Memories </i></b>
           </h1>
           <h2 class="subtitle">
-            Place to store your Adventure<b><i> Memories </i></b>
+            Store your new<b><i> Memories </i></b>
           </h2>
         </div>
       </div>
@@ -15,7 +15,7 @@
 
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h2 class="is-size-2 has-text-centered">Latest Memories</h2>
+        <h2 class="is-size-2 has-text-centered">Create Memories</h2>
       </div>
 
       <div
