@@ -6,15 +6,15 @@ from rest_framework.response import Response
 from .models import Memory
 from .serializers import MemorySerializer
 
-from rest_framework import viewsets
-from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
 
-class MemoryViewSet(viewsets.ModelViewSet):
-    queryset = Memory.objects.all()
-    serializer_class = MemorySerializer
-    authentication_classes = (BasicAuthentication,)
-    permission_classes = (IsAuthenticated,)
+class CreateMemory(APIView):
+    def post(self, request):
+        serializer = MemorySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
 
 class LatestMemoriesList(APIView):
     def get(self, request, format=None):

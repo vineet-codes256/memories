@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
+    'http://localhost:3000',
 ]
 
 MIDDLEWARE = [
@@ -62,9 +63,9 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
   'http://localhost:8080',
+  'http://localhost:3000',
 )
 
 ROOT_URLCONF = 'memories_django.urls'
@@ -121,9 +122,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ]
 }
 
 # Internationalization

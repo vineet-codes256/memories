@@ -18,24 +18,72 @@
         <h2 class="is-size-2 has-text-centered">Create Memories</h2>
       </div>
 
-      <div
-        class="column is-3"
-        v-for="memory in latestMemories"
-        v-bind:key="memory.id"
-      >
-        <div class="box">
-          <figure class="image mb-4">
-            <img v-bind:src="memory.get_photo">
-          </figure>
+      <div class="column is-12">
+        <form action="{{ route('memories.store') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input class="input" type="text" name="name" placeholder="Name" required>
+            </div>
+          </div>
+          
+          <div class="field">
+            <label class="label">Species</label>
+            <div class="control">
+              <input class="input" type="text" name="species" placeholder="Species" required>
+            </div>
+          </div>
 
-          <h3 class="is-size-4">{{ memory.name }}</h3>
-          <p class="is-size-6"><b>Species: </b>{{ memory.species }}</p>
-          <p class="is-size-6"><b>Weight: </b>{{ memory.weight }} kg</p>
-          <p class="is-size-6"><b>Length of fish: </b>{{ memory.length }} cm</p>
-          <p class="is-size-6"><b>Timestamp: </b>on {{ memory.timestamp.replace("T", " at ").replace("Z", "") }}</p>
-          <p class="is-size-6"><b>Location where caught (Coordinates): </b>{{ memory.latitude }}° N, {{ memory.longitude }}° E</p>
-          <p class="is-size-6"><b>Fish description: </b>{{ memory.description }}</p>
-        </div>
+          <div class="field">
+            <label class="label">Weight</label>
+            <div class="control">
+              <input class="input" type="float" name="weight" placeholder="Weight" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Length</label>
+            <div class="control">
+              <input class="input" type="float" name="length" placeholder="Length" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Latitude</label>
+            <div class="control">
+              <input class="input" type="float" name="latitude" placeholder="Latitude" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Longitude</label>
+            <div class="control">
+              <input class="input" type="float" name="longitude" placeholder="Longitude" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+              <textarea class="textfield" name="description" placeholder="Description" required></textarea>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Timestamp</label>
+            <div class="control">
+              <input class="input" type="datetime-local" name="timestamp" placeholder="Timestamp" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Photo</label>
+            <div class="control">
+              <input class="input" type="file" name="image" required>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

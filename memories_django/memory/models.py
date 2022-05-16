@@ -1,11 +1,13 @@
 from io import BytesIO
 from pickle import TRUE
 from PIL import Image
-
+from django.contrib.auth.models import User
 from django.core.files import File
 from django.db import models
+from django.utils.timezone import now
 
 class Memory(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=100)                     
     slug = models.SlugField()
     species = models.CharField(null=True, max_length=100)
@@ -15,7 +17,7 @@ class Memory(models.Model):
     longitude = models.FloatField(null=True, blank=True)
     description = models.TextField(blank=True, null=True)
     photo = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    timestamp = models.DateTimeField(null=True, blank=True)
+    timestamp = models.DateTimeField(default=now)
 
     class Meta:
         ordering = ('-timestamp',)                         # ordering = ('-timestamp',)
@@ -30,8 +32,8 @@ class Memory(models.Model):
         if self.photo:
             return 'http://127.0.01:8000' + self.photo.url
         else:
-            if self.image:
-                self.photo = self.make_photo(self.image)
+            if self.photo:
+                self.photo = self.make_photo(self.photo)
                 self.save()
                 return 'http://127.0.01:8000' + self.photo.url
             else:
